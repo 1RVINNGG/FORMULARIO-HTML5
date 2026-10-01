@@ -1,0 +1,16 @@
+# Seguridad de la carpeta de fotos: NO accesible desde el navegador.
+# Los archivos solo los lee/escribe PHP desde el servidor.
+
+# Apache 2.4+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+
+# Apache 2.2 (compatibilidad)
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>
+
+# Sin listado de directorio
+Options -Indexes
